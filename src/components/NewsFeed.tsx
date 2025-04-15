@@ -8,7 +8,7 @@ const DUMMY_POSTS = [
     author: {
       name: "Frankie Vines",
       title: "Advertising and Marketing",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+      avatar: "https://images.unsplash.com/photo-1567784177951-6fa58317e16b?q=80&w=200&auto=format&fit=crop"
     },
     content: "Come learn how to supplement your income to enhance your Lifestyle. Join us on a Zoom call.\nYou need to get this information:\nFrankie Vines invited you.\n- Inbox me for zoom id.",
     timeAgo: "1 day ago",
@@ -22,7 +22,7 @@ const DUMMY_POSTS = [
     author: {
       name: "Marcus Johnson",
       title: "Tech Entrepreneur",
-      avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=200&auto=format&fit=crop"
+      avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
     },
     content: "Just launched our new app focused on empowering Black businesses! 🚀 Check it out and let me know your thoughts. Together we rise! 💪🏾",
     timeAgo: "3 hours ago",
@@ -36,7 +36,7 @@ const DUMMY_POSTS = [
     author: {
       name: "Maya Brooks",
       title: "Community Leader",
-      avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+      avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
     },
     content: "Hosting a community meetup this weekend! Topics: Financial literacy, business networking, and tech opportunities. Who's joining? Drop a 🙋🏾‍♂️ below!",
     timeAgo: "5 hours ago",
@@ -64,7 +64,7 @@ const DUMMY_POSTS = [
     author: {
       name: "Tasha Reynolds",
       title: "Small Business Owner",
-      avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=200&auto=format&fit=crop"
+      avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
     },
     content: "Black Business Spotlight! 🌟\nVisit our new store location downtown. Grand opening this Saturday!\nSpecial discounts for community members.\n#SupportBlackBusiness #Community",
     timeAgo: "1 day ago",

@@ -1,13 +1,6 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, Share, Repeat, MoreVertical, ArrowRight } from 'lucide-react';
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { MessageSquare, Share, Repeat, MoreVertical } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -39,6 +32,7 @@ const Post = ({ post }: PostProps) => {
   const [likesCount, setLikesCount] = useState(post.likes);
   const [repostsCount, setRepostsCount] = useState(post.reposts);
   const [comment, setComment] = useState('');
+  const [showComments, setShowComments] = useState(false);
 
   const handleLike = () => {
     if (liked) {
@@ -101,47 +95,17 @@ const Post = ({ post }: PostProps) => {
           onClick={handleLike}
           className={`flex items-center gap-2 ${liked ? 'text-[#4A2B0F]' : 'text-muted'} hover:text-[#4A2B0F] transition-colors`}
         >
-          <span className="text-2xl">{liked ? '✊🏾' : '✊🏽'}</span>
+          <span className="text-2xl">✊🏾</span>
           <span className="text-sm">Like</span>
         </button>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <button className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
-              <MessageSquare size={20} />
-              <span className="text-sm">Comment</span>
-            </button>
-          </SheetTrigger>
-          <SheetContent side="bottom" className="h-[80vh]">
-            <SheetHeader>
-              <SheetTitle>Comments</SheetTitle>
-            </SheetHeader>
-            <div className="flex-1 mt-4">
-              <div className="flex items-center gap-2 p-4 border rounded-full bg-background">
-                <img
-                  src={post.author.avatar}
-                  alt="Your avatar"
-                  className="w-8 h-8 rounded-full"
-                />
-                <input
-                  type="text"
-                  placeholder="Add a comment..."
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  className="flex-1 bg-transparent border-none outline-none"
-                />
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  onClick={handleComment}
-                  disabled={!comment.trim()}
-                >
-                  <ArrowRight className={comment.trim() ? "text-primary" : "text-muted"} />
-                </Button>
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
+        <button 
+          onClick={() => setShowComments(!showComments)}
+          className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
+        >
+          <MessageSquare size={20} />
+          <span className="text-sm">Comment</span>
+        </button>
 
         <button 
           onClick={handleRepost}
@@ -173,6 +137,33 @@ const Post = ({ post }: PostProps) => {
           </PopoverContent>
         </Popover>
       </div>
+
+      {showComments && (
+        <div className="mt-4 border-t border-accent pt-4">
+          <div className="flex items-center gap-2">
+            <img
+              src={post.author.avatar}
+              alt="Your avatar"
+              className="w-8 h-8 rounded-full"
+            />
+            <div className="flex-1 flex gap-2">
+              <Textarea
+                placeholder="Write a comment..."
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                className="min-h-[40px] flex-1"
+              />
+              <Button 
+                onClick={handleComment}
+                disabled={!comment.trim()}
+                size="sm"
+              >
+                Post
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
