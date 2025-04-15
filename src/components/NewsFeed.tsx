@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useToast } from '@/hooks/use-toast';
 
 const DUMMY_POSTS = [
   {
@@ -8,7 +9,7 @@ const DUMMY_POSTS = [
     author: {
       name: "Frankie Vines",
       title: "Advertising and Marketing",
-      avatar: "https://images.unsplash.com/photo-1567784177951-6fa58317e16b?q=80&w=200&auto=format&fit=crop"
+      avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
     },
     content: "Come learn how to supplement your income to enhance your Lifestyle. Join us on a Zoom call.\nYou need to get this information:\nFrankie Vines invited you.\n- Inbox me for zoom id.",
     timeAgo: "1 day ago",

@@ -1,6 +1,8 @@
 
 import { SidebarProvider, Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar"
 import { Home, Store, User, Settings, Users, Bell } from "lucide-react"
+import { useNavigate } from "react-router-dom"
+import { useToast } from "@/hooks/use-toast"
 
 const sidebarItems = [
   { icon: Home, label: "Home", href: "/" },
@@ -12,6 +14,23 @@ const sidebarItems = [
 ]
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate()
+  const { toast } = useToast()
+
+  const handleNavigation = (href: string) => {
+    if (href === '/') {
+      navigate(href)
+      return
+    }
+    
+    // Show toast for inactive pages
+    toast({
+      title: "Page Not Available",
+      description: "This feature is coming soon!",
+      variant: "default"
+    })
+  }
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
@@ -23,7 +42,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   {sidebarItems.map((item) => (
                     <SidebarMenuItem key={item.label}>
                       <SidebarMenuButton asChild>
-                        <a href={item.href} className="flex items-center gap-2">
+                        <a 
+                          onClick={(e) => {
+                            e.preventDefault()
+                            handleNavigation(item.href)
+                          }} 
+                          href={item.href}
+                          className="flex items-center gap-2"
+                        >
                           <item.icon className="h-5 w-5" />
                           <span>{item.label}</span>
                         </a>
