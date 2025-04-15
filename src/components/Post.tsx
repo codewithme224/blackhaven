@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { MessageSquare, Share, Repeat, MoreVertical } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import {
   Popover,
   PopoverContent,
@@ -20,7 +21,15 @@ interface PostProps {
     content: string;
     timeAgo: string;
     likes: number;
-    comments: number;
+    comments: Array<{
+      id: number;
+      author: {
+        name: string;
+        avatar: string;
+      };
+      content: string;
+      timeAgo: string;
+    }>;
     reposts: number;
     shares: number;
   };
@@ -33,12 +42,17 @@ const Post = ({ post }: PostProps) => {
   const [repostsCount, setRepostsCount] = useState(post.reposts);
   const [comment, setComment] = useState('');
   const [showComments, setShowComments] = useState(false);
+  const { toast } = useToast();
 
   const handleLike = () => {
     if (liked) {
       setLikesCount(prev => prev - 1);
     } else {
       setLikesCount(prev => prev + 1);
+      toast({
+        title: "Post liked! ✊🏾",
+        duration: 1500
+      });
     }
     setLiked(!liked);
   };
@@ -48,6 +62,10 @@ const Post = ({ post }: PostProps) => {
       setRepostsCount(prev => prev - 1);
     } else {
       setRepostsCount(prev => prev + 1);
+      toast({
+        title: "Post reposted! 🔄",
+        duration: 1500
+      });
     }
     setReposted(!reposted);
   };
@@ -55,6 +73,10 @@ const Post = ({ post }: PostProps) => {
   const handleComment = () => {
     if (comment.trim()) {
       console.log('Comment submitted:', comment);
+      toast({
+        title: "Comment posted! 💭",
+        duration: 1500
+      });
       setComment('');
     }
   };
@@ -84,16 +106,18 @@ const Post = ({ post }: PostProps) => {
       </div>
 
       <div className="flex items-center justify-between text-sm text-muted mb-3">
-        <span>{likesCount} likes</span>
-        <span>{post.comments} comments</span>
-        <span>{repostsCount} reposts</span>
+        <span className="transition-all duration-200">{likesCount} likes</span>
+        <span>{post.comments?.length || 0} comments</span>
+        <span className="transition-all duration-200">{repostsCount} reposts</span>
         <span>{post.shares} shares</span>
       </div>
 
       <div className="flex justify-between items-center pt-3 border-t border-accent">
         <button 
           onClick={handleLike}
-          className={`flex items-center gap-2 ${liked ? 'text-[#4A2B0F]' : 'text-muted'} hover:text-[#4A2B0F] transition-colors`}
+          className={`flex items-center gap-2 transition-all duration-200 ${
+            liked ? 'text-[#4A2B0F] scale-110' : 'text-muted'
+          } hover:text-[#4A2B0F] hover:scale-105`}
         >
           <span className="text-2xl">✊🏾</span>
           <span className="text-sm">Like</span>
@@ -109,7 +133,9 @@ const Post = ({ post }: PostProps) => {
 
         <button 
           onClick={handleRepost}
-          className={`flex items-center gap-2 ${reposted ? 'text-green-500' : 'text-muted'} hover:text-green-500 transition-colors`}
+          className={`flex items-center gap-2 transition-all duration-200 ${
+            reposted ? 'text-green-500 scale-110' : 'text-muted'
+          } hover:text-green-500 hover:scale-105`}
         >
           <Repeat size={20} />
           <span className="text-sm">Repost</span>
@@ -139,8 +165,25 @@ const Post = ({ post }: PostProps) => {
       </div>
 
       {showComments && (
-        <div className="mt-4 border-t border-accent pt-4">
-          <div className="flex items-center gap-2">
+        <div className="mt-4 border-t border-accent pt-4 space-y-4">
+          {post.comments?.map((comment) => (
+            <div key={comment.id} className="flex gap-3">
+              <img
+                src={comment.author.avatar}
+                alt={comment.author.name}
+                className="w-8 h-8 rounded-full"
+              />
+              <div className="flex-1 bg-muted p-3 rounded-lg">
+                <div className="flex justify-between items-start">
+                  <span className="font-semibold text-sm">{comment.author.name}</span>
+                  <span className="text-xs text-muted-foreground">{comment.timeAgo}</span>
+                </div>
+                <p className="text-sm mt-1">{comment.content}</p>
+              </div>
+            </div>
+          ))}
+          
+          <div className="flex items-center gap-2 mt-4">
             <img
               src={post.author.avatar}
               alt="Your avatar"
@@ -157,6 +200,7 @@ const Post = ({ post }: PostProps) => {
                 onClick={handleComment}
                 disabled={!comment.trim()}
                 size="sm"
+                className="transition-all duration-200 hover:scale-105"
               >
                 Post
               </Button>

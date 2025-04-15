@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Post from './Post';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,7 +15,26 @@ const DUMMY_POSTS = [
     content: "Come learn how to supplement your income to enhance your Lifestyle. Join us on a Zoom call.\nYou need to get this information:\nFrankie Vines invited you.\n- Inbox me for zoom id.",
     timeAgo: "1 day ago",
     likes: 45,
-    comments: 12,
+    comments: [
+      {
+        id: 1,
+        author: {
+          name: "Marcus Johnson",
+          avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "This sounds interesting! What time is the call?",
+        timeAgo: "5h ago"
+      },
+      {
+        id: 2,
+        author: {
+          name: "Maya Brooks",
+          avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "I attended the last session, it was really informative!",
+        timeAgo: "3h ago"
+      }
+    ],
     reposts: 8,
     shares: 5
   },
