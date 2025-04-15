@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageSquare, Share, Repeat } from 'lucide-react';
+import { MessageSquare, Share, Repeat, MoreVertical } from 'lucide-react';
 import {
   Drawer,
   DrawerContent,
