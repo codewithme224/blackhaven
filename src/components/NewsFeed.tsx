@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Post from './Post';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const DUMMY_POSTS = [
   {
@@ -34,11 +35,13 @@ const DUMMY_POSTS = [
 const NewsFeed = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-2xl mx-auto p-4">
-        {DUMMY_POSTS.map((post) => (
-          <Post key={post.id} post={post} />
-        ))}
-      </div>
+      <ScrollArea className="h-screen w-full">
+        <div className="max-w-2xl mx-auto p-4 space-y-4">
+          {DUMMY_POSTS.map((post) => (
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+      </ScrollArea>
     </div>
   );
 };
