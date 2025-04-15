@@ -1,14 +1,13 @@
-
 import React, { useState } from 'react';
-import { MessageSquare, Share, Repeat, ThumbsUp, MoreVertical } from 'lucide-react';
+import { MessageSquare, Share, Repeat } from 'lucide-react';
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -61,7 +60,6 @@ const Post = ({ post }: PostProps) => {
 
   const handleComment = () => {
     if (comment.trim()) {
-      // In a real app, this would send the comment to an API
       console.log('Comment submitted:', comment);
       setComment('');
     }
@@ -101,27 +99,27 @@ const Post = ({ post }: PostProps) => {
       <div className="flex justify-between items-center pt-3 border-t border-accent">
         <button 
           onClick={handleLike}
-          className={`flex items-center gap-2 ${liked ? 'text-blue-500' : 'text-muted'} hover:text-blue-500 transition-colors`}
+          className={`flex items-center gap-2 ${liked ? 'text-[#4A2B0F]' : 'text-muted'} hover:text-[#4A2B0F] transition-colors`}
         >
-          <ThumbsUp size={20} />
+          <span className="text-2xl">{liked ? '✊🏾' : '✊'}</span>
           <span className="text-sm">Like</span>
         </button>
 
-        <Sheet>
-          <SheetTrigger asChild>
+        <Drawer>
+          <DrawerTrigger asChild>
             <button className="flex items-center gap-2 text-muted hover:text-foreground transition-colors">
               <MessageSquare size={20} />
               <span className="text-sm">Comment</span>
             </button>
-          </SheetTrigger>
-          <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Add Comment</SheetTitle>
-              <SheetDescription>
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Add Comment</DrawerTitle>
+              <DrawerDescription>
                 Write your comment below
-              </SheetDescription>
-            </SheetHeader>
-            <div className="mt-4 space-y-4">
+              </DrawerDescription>
+            </DrawerHeader>
+            <div className="p-4 space-y-4">
               <Textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
@@ -130,8 +128,8 @@ const Post = ({ post }: PostProps) => {
               />
               <Button onClick={handleComment}>Post Comment</Button>
             </div>
-          </SheetContent>
-        </Sheet>
+          </DrawerContent>
+        </Drawer>
 
         <button 
           onClick={handleRepost}
