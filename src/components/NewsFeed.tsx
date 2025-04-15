@@ -48,7 +48,26 @@ const DUMMY_POSTS = [
     content: "Just launched our new app focused on empowering Black businesses! 🚀 Check it out and let me know your thoughts. Together we rise! 💪🏾",
     timeAgo: "3 hours ago",
     likes: 230,
-    comments: 45,
+    comments: [
+      {
+        id: 1,
+        author: {
+          name: "Tasha Reynolds",
+          avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "This is exactly what our community needs! When can I download it?",
+        timeAgo: "2h ago"
+      },
+      {
+        id: 2,
+        author: {
+          name: "Dr. James Wilson",
+          avatar: "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Proud of you! Will share with my network.",
+        timeAgo: "1h ago"
+      }
+    ],
     reposts: 78,
     shares: 28
   },
@@ -62,7 +81,35 @@ const DUMMY_POSTS = [
     content: "Hosting a community meetup this weekend! Topics: Financial literacy, business networking, and tech opportunities. Who's joining? Drop a 🙋🏾‍♂️ below!",
     timeAgo: "5 hours ago",
     likes: 189,
-    comments: 67,
+    comments: [
+      {
+        id: 1,
+        author: {
+          name: "Frankie Vines",
+          avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Count me in! What time does it start?",
+        timeAgo: "4h ago"
+      },
+      {
+        id: 2,
+        author: {
+          name: "Marcus Johnson",
+          avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Will there be any investors at the event?",
+        timeAgo: "3h ago"
+      },
+      {
+        id: 3,
+        author: {
+          name: "Tasha Reynolds",
+          avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "🙋🏾‍♀️ I'll be there! Looking forward to it!",
+        timeAgo: "2h ago"
+      }
+    ],
     reposts: 34,
     shares: 15
   },
@@ -76,7 +123,26 @@ const DUMMY_POSTS = [
     content: "Just finished another successful mentorship session with our youth. The future is bright! Remember: education is not just about books, it's about building character and confidence. 📚✨",
     timeAgo: "2 days ago",
     likes: 342,
-    comments: 89,
+    comments: [
+      {
+        id: 1,
+        author: {
+          name: "Maya Brooks",
+          avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Your dedication to our youth is inspiring!",
+        timeAgo: "1d ago"
+      },
+      {
+        id: 2,
+        author: {
+          name: "Frankie Vines",
+          avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "How can we volunteer for the next session?",
+        timeAgo: "1d ago"
+      }
+    ],
     reposts: 156,
     shares: 45
   },
@@ -90,7 +156,35 @@ const DUMMY_POSTS = [
     content: "Black Business Spotlight! 🌟\nVisit our new store location downtown. Grand opening this Saturday!\nSpecial discounts for community members.\n#SupportBlackBusiness #Community",
     timeAgo: "1 day ago",
     likes: 567,
-    comments: 123,
+    comments: [
+      {
+        id: 1,
+        author: {
+          name: "Dr. James Wilson",
+          avatar: "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Will definitely stop by! What are your hours?",
+        timeAgo: "20h ago"
+      },
+      {
+        id: 2,
+        author: {
+          name: "Marcus Johnson",
+          avatar: "https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Excited to support! Will share with my followers.",
+        timeAgo: "16h ago"
+      },
+      {
+        id: 3,
+        author: {
+          name: "Maya Brooks",
+          avatar: "https://images.unsplash.com/photo-1523450001312-faa4e2e37e02?q=80&w=200&auto=format&fit=crop"
+        },
+        content: "Congratulations on the new location! 🎉",
+        timeAgo: "12h ago"
+      }
+    ],
     reposts: 234,
     shares: 89
   }
